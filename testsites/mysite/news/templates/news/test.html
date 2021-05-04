@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{%block title %}
+Тест : {{block.super}}
+{%endblock%}
+
+{% block sidebar %}
+{%include 'inc/_sidebar.html'%}
+{% endblock %}
+
+
+{% block content %}
+<form method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <button style="margin-top: 10px" type="submit" class="btn btn-primary btn-block">Отправить</button>
+
+</form>
+
+{% endblock %}

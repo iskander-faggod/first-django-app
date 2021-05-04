@@ -1,0 +1,11 @@
+body{
+    background-color: #e6dbb9;
+}
+
+.form-group{
+    margin-top: 10px;
+}
+
+.errorlist{
+    color: red;
+}

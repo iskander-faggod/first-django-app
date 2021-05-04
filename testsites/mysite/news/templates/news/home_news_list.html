@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{%block title %}
+{{news_item.title}} : {{block.super}}
+{%endblock%}
+
+{% block sidebar %}
+{%include 'inc/_sidebar.html'%}
+{% endblock %}
+
+
+{% block content %}
+{{mixin_prop}}
+{% for item in news %}
+<div class="card mt-5" style="width: 18rem;">
+    <div class="card-body">
+        <div class="media">
+            {% if item.photo %}
+            <img src="{{item.photo.url}}" width="50%">
+            {%else%}
+            <p>Фото не найдено.</p>
+            {%endif%}
+            <div class="media-body">
+                {% autoescape off%}
+                <h5 class="card-title {% cycle 'text-danger' 'text-success' %}">{{item.title}}</h5>
+                <p class="card-text">{{item.content}}</p>
+                <hr>
+                <!--                    <h1>{{item.my_func}}</h1>-->
+                <a href="{{item.category.get_absolute_url}}" class="card-text">{{item.category}}</a>
+                <p class="card-text">{{item.created_at|date:"Y-m-d H:i:s"}}</p>
+                {%endautoescape%}
+            </div>
+        </div>
+
+    </div>
+</div>
+{%endfor%}
+{%endblock%}
+
